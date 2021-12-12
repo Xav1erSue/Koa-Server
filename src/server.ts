@@ -7,7 +7,6 @@ import 'reflect-metadata';
 import { logger } from './MiddleWare/logger';
 import router from './router';
 
-// 初始化 Koa 应用实例
 createConnection()
   .then(() => {
     // 初始化 Koa 应用实例
