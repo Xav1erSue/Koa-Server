@@ -5,7 +5,7 @@
   "username": "root",
   "password": "DAXIEzimu123",
   "database": "todoApp",
-  "synchronize": true,
+  "synchronize": false,
   "entities": ["src/entity/*.ts"],
   "cli": {
     "entitiesDir": "src/entity"

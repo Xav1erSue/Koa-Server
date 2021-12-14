@@ -1,18 +1,18 @@
+// 所有路由汇总到入口文件
 import Router from '@koa/router';
+import { login, register } from './auth';
+import { user } from './user';
+import { todo, doing, done } from './list';
+const unprotectedRouter = new Router();
+unprotectedRouter
+  .use('/auth', login.routes(), login.allowedMethods())
+  .use('/auth', register.routes(), register.allowedMethods());
 
-import AuthController from '../Controller/auth';
-import UserController from '../Controller/user';
+const protectedRouter = new Router();
+protectedRouter
+  .use('/user', user.routes(), user.allowedMethods())
+  .use('/list', todo.routes(), todo.allowedMethods())
+  .use('/list', doing.routes(), doing.allowedMethods())
+  .use('/list', done.routes(), done.allowedMethods());
 
-const router = new Router();
-
-// auth 相关的路由
-router.post('/auth/login', AuthController.login);
-router.post('/auth/register', AuthController.register);
-
-// users 相关的路由
-router.get('/users', UserController.listUsers);
-router.get('/users/:id', UserController.showUserDetail);
-router.put('/users/:id', UserController.updateUser);
-router.delete('/users/:id', UserController.deleteUser);
-
-export default router;
+export { protectedRouter, unprotectedRouter };
