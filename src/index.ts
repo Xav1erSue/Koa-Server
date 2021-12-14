@@ -30,6 +30,8 @@ createConnection()
       .use(protectedRouter.routes())
 
       // 运行服务器
-      .listen(3000);
+      .listen(3000, () => {
+        console.log('Koa server is running...');
+      });
   })
   .catch((err: string) => console.log('TypeORM connection error:', err));
