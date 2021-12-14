@@ -1,8 +1,8 @@
 {
-  "name": "koa-quickstart",
+  "name": "koa-server",
   "version": "1.0.0",
   "private": true,
-  "description": "Hands-on tutorial for Koa 2",
+  "description": "backend server with Koa 2",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -10,10 +10,9 @@
     "start": "nodemon --watch src -e ts,tsx --exec ts-node src/index.ts"
   },
   "keywords": [
-    "koa",
-    "tutorial"
+    "koa"
   ],
-  "author": "mRcfps",
+  "author": "Xav1erSue",
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.6",
     "@types/koa": "2.13.4",
