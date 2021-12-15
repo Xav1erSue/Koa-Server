@@ -4,7 +4,7 @@ import { User } from './user';
 @Entity()
 export class Todo {
   @PrimaryGeneratedColumn()
-  id: Number;
+  id: number;
 
   @Column()
   title: string;

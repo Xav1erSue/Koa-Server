@@ -7,8 +7,12 @@
     "outDir": "dist",
     "declaration": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "moduleResolution": "node",
+    "allowJs": true,
+    "noEmit": true,
+    "strict": false,
+    "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*"],
