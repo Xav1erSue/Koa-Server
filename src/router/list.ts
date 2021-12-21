@@ -22,4 +22,8 @@ done.get('/:id', ListController.showItem);
 done.put('/add', ListController.addItem);
 done.del('/del/:id', ListController.delItem);
 
+const token = new Router({ prefix: '/token' });
+
+token.post('/');
+
 export { todo, doing, done };

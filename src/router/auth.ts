@@ -8,4 +8,7 @@ login.post('/login', AuthController.login);
 const register = new Router();
 register.post('/register', AuthController.register);
 
-export { login, register };
+const tokenValidate = new Router();
+tokenValidate.post('/validate', AuthController.tokenValidate);
+
+export { login, register, tokenValidate };

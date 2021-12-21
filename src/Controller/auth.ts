@@ -63,4 +63,17 @@ export default class AuthController {
       ctx.body = { code: 2000, message: '注册成功' };
     }
   }
+
+  public static async tokenValidate(ctx: Context) {
+    // 获取请求该方法的用户
+    const uid = ctx.state.user.id;
+    const userRepository = getManager().getRepository(User);
+    const user = await userRepository.findOne(uid);
+    ctx.status = 200;
+    ctx.body = {
+      code: 2000,
+      message: 'token合法',
+      user: user,
+    };
+  }
 }
