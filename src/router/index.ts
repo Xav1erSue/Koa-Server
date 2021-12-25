@@ -3,12 +3,13 @@ import Router from '@koa/router';
 import { login, register, tokenValidate } from './auth';
 import { user } from './user';
 import { todo, doing, done } from './list';
+import check from './check';
 
 const unprotectedRouter = new Router();
 unprotectedRouter
   .use('/auth', login.routes(), login.allowedMethods())
-  .use('/auth', register.routes(), register.allowedMethods());
-
+  .use('/auth', register.routes(), register.allowedMethods())
+  .use('/check', check.routes(), check.allowedMethods());
 const protectedRouter = new Router();
 protectedRouter
   .use('/user', user.routes(), user.allowedMethods())

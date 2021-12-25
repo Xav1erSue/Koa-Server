@@ -50,7 +50,6 @@ export default class AuthController {
       ctx.body = { code: 40001, message: '当前用户名已被注册' };
     } else {
       const newUser = new User();
-      // 后续进行后端格式检查
       newUser.name = ctx.request.body.name;
       newUser.email = ctx.request.body.email;
       newUser.phoneNumber = ctx.request.body.phoneNumber;
@@ -59,8 +58,13 @@ export default class AuthController {
 
       // 保存到数据库
       await userRepository.save(newUser);
+      await userRepository.findOne(newUser);
       ctx.status = 201;
-      ctx.body = { code: 2000, message: '注册成功' };
+      ctx.body = {
+        code: 2000,
+        message: '注册成功',
+        token: jwt.sign({ id: newUser.id }, JWT_SECRET),
+      };
     }
   }
 
@@ -69,11 +73,19 @@ export default class AuthController {
     const uid = ctx.state.user.id;
     const userRepository = getManager().getRepository(User);
     const user = await userRepository.findOne(uid);
-    ctx.status = 200;
-    ctx.body = {
-      code: 2000,
-      message: 'token合法',
-      user: user,
-    };
+    if (user) {
+      ctx.status = 200;
+      ctx.body = {
+        code: 2000,
+        message: 'token合法',
+        user: user,
+      };
+    } else {
+      ctx.status = 410;
+      ctx.body = {
+        code: 40005,
+        message: 'token持有者已注销',
+      };
+    }
   }
 }
