@@ -40,12 +40,14 @@
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.1.1",
     "argon2": "^0.28.3",
+    "dayjs": "^1.10.7",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-jwt": "^4.0.3",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
+    "tencentcloud-sdk-nodejs": "^4.0.280",
     "typeorm": "^0.2.41"
   }
 }

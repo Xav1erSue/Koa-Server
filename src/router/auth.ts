@@ -11,4 +11,7 @@ register.post('/register', AuthController.register);
 const tokenValidate = new Router();
 tokenValidate.post('/validate', AuthController.tokenValidate);
 
-export { login, register, tokenValidate };
+const getSMSCode = new Router();
+getSMSCode.post('/smscode', AuthController.getSMSCode);
+
+export { login, register, tokenValidate, getSMSCode };
